@@ -86,4 +86,33 @@ var finances = [
     ['Jan-2017', 138230],
     ['Feb-2017', 671099],
   ];
+ console.log( "Financial Analysis\n---------------------")
+
+ // The total number of months included in the dataset.
+ var totalNumberOfMonths = 0;
+ var total=0;
+ var change=0;
+ var currentMonth;
+ var date;
+ var value;
+ var totalChanges;
+
+ for ( var i=0; i<finances.length; i++){
+    currentMonth= finances[i]
+    date=currentMonth[0]
+    value=currentMonth[1]
+    total= total +finances[i][1]
+  totalNumberOfMonths++;
   
+ }
+ console.log(currentMonth)
+ console.log(date)
+ console.log(value)
+
+ averageChange = ( totalChanges / (totalNumberOfMonths - 1 ))
+
+
+//  var consoleAll= "Total:" +total\n "Total Moths:" + totalMoths\n
+  
+
+//  console.log(consoleAll); 
