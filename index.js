@@ -86,33 +86,63 @@ var finances = [
     ['Jan-2017', 138230],
     ['Feb-2017', 671099],
   ];
- console.log( "Financial Analysis\n---------------------")
+console.log( "Financial Analysis\n---------------------")
 
- // The total number of months included in the dataset.
- var totalNumberOfMonths = 0;
- var total=0;
- var change=0;
- var currentMonth;
- var date;
- var value;
- var totalChanges;
 
- for ( var i=0; i<finances.length; i++){
-    currentMonth= finances[i]
-    date=currentMonth[0]
-    value=currentMonth[1]
-    total= total +finances[i][1]
-  totalNumberOfMonths++;
+// Total number of months 
+
+var totalMonths = finances.length;
+console.log("Total Months: " + totalMonths);
+
+// Net total amount of profit and losses
+
+var totalProfitLoss = 0;
+for (var i = 0; i < finances.length; i++) {
+    totalProfitLoss += finances[i][1];
+}
+console.log("Total: $" + totalProfitLoss);
+
+
+//Average change 
+
+var totalChange = 0;
+for (var i = 1; i < finances.length; i++) {
+    totalChange += finances[i][1] - finances[i - 1][1];
+}
+
+var averageChange = totalChange / (totalMonths - 1);
+console.log("Average Change: $" + averageChange.toFixed(2));
+
+
+// Greatest increase in Profits/Losses 
+
+var greatestIncrease = finances[1][1] - finances[0][1];
+var increaseMonth = finances[1][0];
+
+for (var i = 2; i < finances.length; i++) {
+    var currentIncrease = finances[i][1] - finances[i - 1][1];
+    if (currentIncrease > greatestIncrease) {
+        greatestIncrease = currentIncrease;
+        increaseMonth = finances[i][0];
+    }
+}
+
+console.log("Greatest Increase in Profits/Losses: " + increaseMonth + " ($" + greatestIncrease + ")");
+
+
+//  Greatest decrease in Profits/Losses 
+
+var greatestDecrease = finances[1][1] - finances[0][1];
+var decreaseMonth = finances[1][0];
+
+for (var i = 2; i < finances.length; i++) {
+    var currentDecrease = finances[i][1] - finances[i - 1][1];
+    if (currentDecrease < greatestDecrease) {
+        greatestDecrease = currentDecrease;
+        decreaseMonth = finances[i][0];
+    }
+}
+
+console.log("Greatest Decrease in Profits/Losses: " + decreaseMonth + " ($" + greatestDecrease + ")");
+
   
- }
- console.log(currentMonth)
- console.log(date)
- console.log(value)
-
- averageChange = ( totalChanges / (totalNumberOfMonths - 1 ))
-
-
-//  var consoleAll= "Total:" +total\n "Total Moths:" + totalMoths\n
-  
-
-//  console.log(consoleAll); 
